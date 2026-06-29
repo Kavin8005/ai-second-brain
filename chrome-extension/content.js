@@ -1,7 +1,7 @@
 // Content script - runs on matching pages
 // Extracts meaningful content and sends to backend
 
-const SERVER_URL = 'http://localhost:3001';
+// Server URL is loaded dynamically from storage
 const MIN_TIME_ON_PAGE = 15; // seconds - only capture if user spent 15s+
 const startTime = Date.now();
 
@@ -73,12 +73,13 @@ function extractContent() {
 
 async function sendToBackend(data) {
   try {
-    const settings = await chrome.storage.local.get(['secret', 'enabled', 'captured']);
+    const settings = await chrome.storage.local.get(['secret', 'enabled', 'captured', 'serverUrl']);
     if (settings.enabled === false) return;
 
     const secret = settings.secret || '';
+    const serverUrl = (settings.serverUrl || 'http://localhost:3001').replace(/\/$/, '');
 
-    const response = await fetch(`${SERVER_URL}/api/ingest`, {
+    const response = await fetch(`${serverUrl}/api/ingest`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

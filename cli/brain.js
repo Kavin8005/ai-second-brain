@@ -9,7 +9,7 @@ const readline = require('readline');
 let chalk;
 try { chalk = require('chalk'); } catch { chalk = { blue: s=>s, green: s=>s, yellow: s=>s, red: s=>s, gray: s=>s, bold: s=>s, cyan: s=>s }; }
 
-const API = `http://localhost:${process.env.PORT || 3001}/api`;
+const API = process.env.API_URL || `http://localhost:${process.env.PORT || 3001}/api`;
 
 async function ask(question) {
   process.stdout.write(chalk.blue('\n🔍 Searching your knowledge base...\n'));

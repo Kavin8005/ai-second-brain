@@ -118,7 +118,18 @@
         <span class="slider"></span>
       </label>
     </div>
-    <a href="http://localhost:3001" target="_blank" class="btn">
+    <div class="settings-group" style="background: #1e293b; border-radius: 8px; padding: 12px; margin-bottom: 10px;">
+      <div style="font-size: 11px; color: #94a3b8; margin-bottom: 8px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Server Settings</div>
+      <div style="margin-bottom: 8px;">
+        <label for="server-url" style="display: block; font-size: 11px; color: #94a3b8; margin-bottom: 4px;">Server URL</label>
+        <input type="text" id="server-url" placeholder="http://localhost:3001" style="width: 100%; background: #0f172a; border: 1px solid #334155; border-radius: 6px; padding: 6px 8px; color: #e2e8f0; font-size: 12px; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#60a5fa'" onblur="this.style.borderColor='#334155'">
+      </div>
+      <div>
+        <label for="extension-secret" style="display: block; font-size: 11px; color: #94a3b8; margin-bottom: 4px;">Access Secret</label>
+        <input type="password" id="extension-secret" placeholder="Optional secret key" style="width: 100%; background: #0f172a; border: 1px solid #334155; border-radius: 6px; padding: 6px 8px; color: #e2e8f0; font-size: 12px; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#60a5fa'" onblur="this.style.borderColor='#334155'">
+      </div>
+    </div>
+    <a href="http://localhost:3001" target="_blank" class="btn" id="dashboard-btn">
       📊 Open Dashboard
     </a>
     <div class="status" id="status">Checking server...</div>

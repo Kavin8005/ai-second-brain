@@ -1,5 +1,10 @@
-const API = 'http://localhost:3001/api';
-const socket = io('http://localhost:3001');
+const API = window.location.origin && window.location.origin !== 'null' && !window.location.origin.startsWith('file://')
+  ? `${window.location.origin}/api`
+  : 'http://localhost:3001/api';
+
+const socket = io(window.location.origin && window.location.origin !== 'null' && !window.location.origin.startsWith('file://')
+  ? window.location.origin
+  : 'http://localhost:3001');
 
 // ── VIEW SWITCHING ──────────────────────────────────────────
 function showView(name) {
